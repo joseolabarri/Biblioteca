@@ -200,6 +200,16 @@ select.f:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px var(
 .notice.warn{background:#FBF3E7;border-color:#EAD6AE;color:#7a5a1c}
 
 /* ---------- modal ---------- */
+/* ---------- gate (acceso privado) ---------- */
+.gate-wrap{min-height:62vh;display:flex;align-items:center;justify-content:center;padding:20px}
+.gate-card{background:var(--surface);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow-lg);padding:34px 30px;width:100%;max-width:384px}
+.gate-card .gate-title{font-family:var(--serif);font-size:30px;font-weight:600;margin-bottom:4px}
+.gate-card .gate-p{color:var(--ink2);margin:0 0 22px;font-size:14px}
+.gate-card .field{margin-bottom:14px}
+.gate-card .btn.primary{width:100%;justify-content:center;text-align:center;padding:12px;margin-top:6px}
+.gate-err{color:#B4442E;font-size:13px;margin-top:12px;min-height:16px;text-align:center}
+
+/* ---------- modal ---------- */
 .overlay{position:fixed;inset:0;background:rgba(35,33,28,.42);backdrop-filter:blur(2px);display:flex;align-items:center;justify-content:center;padding:20px;z-index:60;animation:fade .2s}
 .modal{background:var(--surface);border-radius:16px;box-shadow:var(--shadow-lg);max-width:460px;width:100%;padding:24px;position:relative}
 .modal.wide{max-width:560px}
@@ -255,12 +265,10 @@ select.f:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px var(
    una config válida, pasa a MODO NUBE y sincroniza.
    ============================================================ */
 const firebaseConfig = {
-  apiKey: "AIzaSyDtLGi9kVXgEbvPtrKzalX-Z84SxdFMYa0",
-  authDomain: "biblioteca-d0b28.firebaseapp.com",
-  projectId: "biblioteca-d0b28",
-  storageBucket: "biblioteca-d0b28.firebasestorage.app",
-  messagingSenderId: "95243939121",
-  appId: "1:95243939121:web:51f0b584304b8400b81410"
+  apiKey: "",
+  authDomain: "",
+  projectId: "",
+  appId: ""
 };
 
 const SEED = [{"titulo": "Asesinato en el Orient Express", "autor": "Agatha Christie", "anio": 1934, "pais": "Reino Unido", "nota": 7}, {"titulo": "Diez Negritos", "autor": "Agatha Christie", "anio": 1939, "pais": "Reino Unido", "nota": 8}, {"titulo": "El Extranjero", "autor": "Albert Camus", "anio": 1942, "pais": "Francia", "nota": 9}, {"titulo": "Los Tres Mosqueteros", "autor": "Alejandro Dumas", "anio": 1844, "pais": "Francia", "nota": 9}, {"titulo": "El Conde de Montecristo", "autor": "Alejandro Dumas", "anio": 1846, "pais": "Francia", "nota": 10}, {"titulo": "Los Novios", "autor": "Alessandro Manzoni", "anio": 1827, "pais": "Italia", "nota": 7}, {"titulo": "El Diario de Ana Frank", "autor": "Ana Frank", "anio": 1947, "pais": "Alemania", "nota": 8}, {"titulo": "El Principito", "autor": "Antoine de Saint-Exupery", "anio": 1943, "pais": "Francia", "nota": 7}, {"titulo": "Las Mil y Una Noches", "autor": "Anónimo", "anio": 900, "pais": "Irak", "nota": 6}, {"titulo": "Las Llaves del Reino", "autor": "Archibald Joseph Cronin", "anio": 1941, "pais": "Reino Unido", "nota": 8}, {"titulo": "Aventuras en Dos Mundos", "autor": "Archibald Joseph Cronin", "anio": 1952, "pais": "Reino Unido", "nota": 10}, {"titulo": "Fortunata y Jacinta", "autor": "Benito Pérez Galdós", "anio": 1887, "pais": "España", "nota": 6}, {"titulo": "Drácula", "autor": "Bram Stoker", "anio": 1897, "pais": "Irlanda", "nota": 7}, {"titulo": "Cartas del Diablo a su Sobrino", "autor": "C.S. Lewis", "anio": 1941, "pais": "Reino Unido", "nota": 7}, {"titulo": "Las Crónicas de Narnia", "autor": "C.S. Lewis", "anio": 1956, "pais": "Reino Unido", "nota": 8}, {"titulo": "La Vida es Sueño", "autor": "Calderón de la Barca", "anio": 1635, "pais": "España", "nota": 8}, {"titulo": "Oliver Twist", "autor": "Charles Dickens", "anio": 1838, "pais": "Reino Unido", "nota": 8}, {"titulo": "Canción de Navidad y Otros Cuentos", "autor": "Charles Dickens", "anio": 1843, "pais": "Reino Unido", "nota": 8}, {"titulo": "El Desierto de los Tártaros", "autor": "Dino Buzzati", "anio": 1940, "pais": "Italia", "nota": 7}, {"titulo": "Don Álvaro o la Fuerza del Sino", "autor": "Duque de Rivas", "anio": 1835, "pais": "España", "nota": 10}, {"titulo": "Narraciones Extraordinarias", "autor": "Edgar Allan Poe", "anio": 1845, "pais": "Estados Unidos", "nota": 7}, {"titulo": "El Corsario Negro", "autor": "Emilio Salgari", "anio": 1898, "pais": "Italia", "nota": 10}, {"titulo": "Retorno a Brideshead", "autor": "Evelyn Waugh", "anio": 1945, "pais": "Reino Unido", "nota": 9}, {"titulo": "Crimen y Castigo", "autor": "Fidor Dostoievski", "anio": 1866, "pais": "Rusia", "nota": 8}, {"titulo": "El Jugador", "autor": "Fidor Dostoievski", "anio": 1866, "pais": "Rusia", "nota": 6}, {"titulo": "Los Demonios", "autor": "Fidor Dostoievski", "anio": 1872, "pais": "Rusia", "nota": 7}, {"titulo": "El Gran Gatsby", "autor": "Francis Scott Fitzgerald", "anio": 1925, "pais": "Estados Unidos", "nota": 9}, {"titulo": "La Metamorfosis y Otros Relatos de Animales", "autor": "Franz Kafka", "anio": 1915, "pais": "República Checa", "nota": 7}, {"titulo": "La Visita de la Vieja Dama", "autor": "Friedrich Dürrenmatt", "anio": 1956, "pais": "Suiza", "nota": 7}, {"titulo": "Relato de un Náufrago", "autor": "Gabriel García Márquez", "anio": 1955, "pais": "Colombia", "nota": 7}, {"titulo": "Cien Años de Soledad", "autor": "Gabriel García Márquez", "anio": 1967, "pais": "Colombia", "nota": 10}, {"titulo": "El Fantasma de la Ópera", "autor": "Gastón Leroux", "anio": 1910, "pais": "Francia", "nota": 8}, {"titulo": "Rebelión en la Granja", "autor": "George Orwell", "anio": 1945, "pais": "Reino Unido", "nota": 8}, {"titulo": "1984", "autor": "George Orwell", "anio": 1949, "pais": "Reino Unido", "nota": 8}, {"titulo": "El Hombre que fue Jueves", "autor": "Gilbert K. Chesterton", "anio": 1908, "pais": "Reino Unido", "nota": 8}, {"titulo": "Fausto", "autor": "Goethe", "anio": 1832, "pais": "Alemania", "nota": 6}, {"titulo": "Madame Bovary", "autor": "Gustave Flaubert", "anio": 1856, "pais": "Francia", "nota": 9}, {"titulo": "Matar a un Ruiseñor", "autor": "Harper Lee", "anio": 1960, "pais": "Estados Unidos", "nota": 7}, {"titulo": "La Guerra de los Mundos", "autor": "Herbert George Wells", "anio": 1898, "pais": "Reino Unido", "nota": 8}, {"titulo": "La Ilíada", "autor": "Homero", "anio": -762, "pais": "Grecia", "nota": 6}, {"titulo": "La Odisea", "autor": "Homero", "anio": -740, "pais": "Grecia", "nota": 7}, {"titulo": "El Hobbit", "autor": "J.R.R. Tolkien", "anio": 1937, "pais": "Reino Unido", "nota": 8}, {"titulo": "El Señor de los Anillos", "autor": "J.R.R. Tolkien", "anio": 1954, "pais": "Reino Unido", "nota": 9}, {"titulo": "El Último Mohicano", "autor": "James Fenimore Cooper", "anio": 1826, "pais": "Estados Unidos", "nota": 8}, {"titulo": "Retrato del Artista Adolescente", "autor": "James Joyce", "anio": 1916, "pais": "Irlanda", "nota": 6}, {"titulo": "El Contrato Social", "autor": "Jean-Jacques Rousseau", "anio": 1762, "pais": "Francia", "nota": 6}, {"titulo": "El Guardián entre el Centeno", "autor": "Jerome David Salinger", "anio": 1951, "pais": "Estados Unidos", "nota": 10}, {"titulo": "Las Consecuencias Económicas de la Paz", "autor": "John Maynard Keynes", "anio": 1919, "pais": "Reino Unido", "nota": 8}, {"titulo": "Las Uvas de la Ira", "autor": "John Steinbeck", "anio": 1939, "pais": "Estados Unidos", "nota": 9}, {"titulo": "Los Viajes de Gulliver", "autor": "Jonathan Swift", "anio": 1726, "pais": "Irlanda", "nota": 5}, {"titulo": "El Corazón de las Tinieblas", "autor": "Joseph Conrad", "anio": 1899, "pais": "Polonia", "nota": 7}, {"titulo": "Cartas Marruecas", "autor": "José Cadalso", "anio": 1789, "pais": "España", "nota": 6}, {"titulo": "Viaje al Centro de la Tierra", "autor": "Julio Verne", "anio": 1864, "pais": "Francia", "nota": 8}, {"titulo": "De la Tierra a la Luna", "autor": "Julio Verne", "anio": 1865, "pais": "Francia", "nota": 6}, {"titulo": "La Vuelta al Mundo en 80 días", "autor": "Julio Verne", "anio": 1872, "pais": "Francia", "nota": 8}, {"titulo": "Miguel Strogoff", "autor": "Julio Verne", "anio": 1876, "pais": "Francia", "nota": 10}, {"titulo": "La Esfinge de los Hielos", "autor": "Julio Verne", "anio": 1897, "pais": "Francia", "nota": 7}, {"titulo": "Guerra y Paz", "autor": "León Tolstói", "anio": 1867, "pais": "Rusia", "nota": 10}, {"titulo": "Anna Karenina", "autor": "León Tolstói", "anio": 1877, "pais": "Rusia", "nota": 9}, {"titulo": "Las Aventuras de Tom Sawyer", "autor": "Mark Twain", "anio": 1876, "pais": "Estados Unidos", "nota": 8}, {"titulo": "El Príncipe y el Mendigo", "autor": "Mark Twain", "anio": 1881, "pais": "Estados Unidos", "nota": 7}, {"titulo": "Frankenstein", "autor": "Mary Shelley", "anio": 1818, "pais": "Reino Unido", "nota": 8}, {"titulo": "El Camino", "autor": "Miguel Delibes", "anio": 1950, "pais": "España", "nota": 9}, {"titulo": "Don Quijote de la Mancha", "autor": "Miguel de Cervantes", "anio": 1615, "pais": "España", "nota": 8}, {"titulo": "El Príncipe", "autor": "Nicolás Maquiavelo", "anio": 1532, "pais": "Italia", "nota": 6}, {"titulo": "El Fantasma de Canterville y otros cuentos", "autor": "Oscar Wilde", "anio": 1887, "pais": "Irlanda", "nota": 7}, {"titulo": "El Retrato de Dorian Gray", "autor": "Oscar Wilde", "anio": 1890, "pais": "Irlanda", "nota": 9}, {"titulo": "El Abanico de Lady Windermere", "autor": "Oscar Wilde", "anio": 1893, "pais": "Irlanda", "nota": 8}, {"titulo": "La Importancia de Llamarse Ernesto", "autor": "Oscar Wilde", "anio": 1895, "pais": "Irlanda", "nota": 8}, {"titulo": "La Venganza de Don Mendo", "autor": "Pedro Muñoz Seca", "anio": 1918, "pais": "España", "nota": 7}, {"titulo": "Zalacaín el Aventurero", "autor": "Pío Baroja", "anio": 1909, "pais": "España", "nota": 7}, {"titulo": "Luces de Bohemia", "autor": "Ramón del Valle-Inclán", "anio": 1924, "pais": "España", "nota": 8}, {"titulo": "Crónicas Marcianas", "autor": "Ray Bradbury", "anio": 1950, "pais": "Estados Unidos", "nota": 8}, {"titulo": "La Isla del Tesoro", "autor": "Robert Louis Stevenson", "anio": 1883, "pais": "Reino Unido", "nota": 9}, {"titulo": "El Curioso Caso de Dr. Jekyll y Mr. Hyde", "autor": "Robert Louis Stevenson", "anio": 1886, "pais": "Reino Unido", "nota": 9}, {"titulo": "Capitanes Intrépidos", "autor": "Ruyard Kipling", "anio": 1897, "pais": "India", "nota": 7}, {"titulo": "Momentos Estelares de la Humanidad", "autor": "Stefan Zweig", "anio": 1927, "pais": "Austria", "nota": 8}, {"titulo": "Fouché", "autor": "Stefan Zweig", "anio": 1929, "pais": "Austria", "nota": 8}, {"titulo": "La Impaciencia del Corazón", "autor": "Stefan Zweig", "anio": 1939, "pais": "Austria", "nota": 7}, {"titulo": "Gestapo", "autor": "Sven Hassel", "anio": 1963, "pais": "Dinamarca", "nota": 8}, {"titulo": "El Último Encuentro", "autor": "Sándor Marai", "anio": 1942, "pais": "Hungría", "nota": 10}, {"titulo": "Antígona", "autor": "Sófocles", "anio": -441, "pais": "Grecia", "nota": 6}, {"titulo": "El Burlador de Sevilla y el Convidado de Piedra", "autor": "Tirso de Molina", "anio": 1616, "pais": "España", "nota": 9}, {"titulo": "El Hombre en Busca del Sentido", "autor": "Víctor Frankl", "anio": 1946, "pais": "Austria", "nota": 8}, {"titulo": "Notre Dame de París", "autor": "Víctor Hugo", "anio": 1831, "pais": "Francia", "nota": 8}, {"titulo": "Ivanhoe", "autor": "Walter Scott", "anio": 1819, "pais": "Reino Unido", "nota": 8}, {"titulo": "La Dama de Blanco", "autor": "Wilkie Collins", "anio": 1860, "pais": "Reino Unido", "nota": 8}, {"titulo": "El Señor de las Moscas", "autor": "William Golding", "anio": 1954, "pais": "Reino Unido", "nota": 8}, {"titulo": "Romeo y Julieta", "autor": "William Shakespeare", "anio": 1597, "pais": "Reino Unido", "nota": 8}, {"titulo": "Hamlet", "autor": "William Shakespeare", "anio": 1602, "pais": "Reino Unido", "nota": 9}];
@@ -298,11 +306,18 @@ function makeStore(){
       mode:'cloud', admin:false, user:null,
       onAuth(cb){authCbs.push(cb);},
       init(cb){
-        auth.onAuthStateChanged(u=>{this.user=u;this.admin=!!u;authCbs.forEach(f=>f());});
-        db.collection('libros').orderBy('titulo').onSnapshot(snap=>{
-          const books=snap.docs.map(d=>({id:d.id,...d.data()}));
-          cb(books);
-        },err=>{console.error(err);cb([]);});
+        let unsub=null;
+        auth.onAuthStateChanged(u=>{
+          this.user=u;this.admin=!!u;authCbs.forEach(f=>f());
+          if(u){
+            if(!unsub)unsub=db.collection('libros').orderBy('titulo').onSnapshot(snap=>{
+              cb(snap.docs.map(d=>({id:d.id,...d.data()})));
+            },err=>{console.error(err);cb([]);});
+          }else{
+            if(unsub){unsub();unsub=null;}
+            cb([]);
+          }
+        });
       },
       async login(email,pass){await auth.signInWithEmailAndPassword(email,pass);},
       async logout(){await auth.signOut();},
@@ -362,14 +377,15 @@ function stats(){
    5 · NAV + AUTH UI
    ============================================================ */
 const VIEWS=[['resumen','Resumen'],['biblioteca','Biblioteca'],['autores','Autores'],['paises','Países'],['comparador','Comparador'],['gestionar','Gestionar']];
+function isGated(){return store.mode==='cloud'&&!store.admin;}
 function renderNav(){
   const nav=$('#nav');nav.innerHTML='';
-  VIEWS.forEach(([id,label])=>{
+  if(!isGated())VIEWS.forEach(([id,label])=>{
     const b=el('button',S.view===id?'on':'',esc(label));
     b.onclick=()=>{S.view=id;render();};
     nav.appendChild(b);
   });
-  const sub=$('#brand-sub'); sub.textContent = BOOKS.length? `${BOOKS.length} libros · ${new Set(BOOKS.map(b=>b.autor)).size} autores`:'—';
+  const sub=$('#brand-sub'); sub.textContent = isGated()?'Acceso privado':(BOOKS.length? `${BOOKS.length} libros · ${new Set(BOOKS.map(b=>b.autor)).size} autores`:'—');
 }
 function renderAuth(){
   const a=$('#auth');a.innerHTML='';
@@ -377,10 +393,7 @@ function renderAuth(){
   const dot=el('span','dot'+(store.mode==='cloud'?' live':''));
   st.appendChild(dot);st.appendChild(document.createTextNode(store.mode==='cloud'?(store.admin?'Nube · sesión':'Nube'):'Modo local'));
   a.appendChild(st);
-  if(store.mode==='cloud'){
-    if(store.admin){const b=el('button','btn sm','Salir');b.onclick=()=>store.logout();a.appendChild(b);}
-    else{const b=el('button','btn sm primary','Entrar');b.onclick=openLogin;a.appendChild(b);}
-  }
+  if(store.mode==='cloud'&&store.admin){const b=el('button','btn sm','Salir');b.onclick=()=>store.logout();a.appendChild(b);}
 }
 
 /* ============================================================
@@ -389,6 +402,7 @@ function renderAuth(){
 const app=()=>$('#app');
 function render(){
   renderNav();renderAuth();
+  if(isGated()){viewGate();return;}
   const v=S.view;
   if(v==='resumen')viewResumen();
   else if(v==='biblioteca')viewBiblioteca();
@@ -396,6 +410,26 @@ function render(){
   else if(v==='paises')viewPaises();
   else if(v==='comparador')viewComparador();
   else if(v==='gestionar')viewGestionar();
+}
+
+/* ---------- GATE (acceso privado) ---------- */
+function viewGate(){
+  const root=el('div','view gate-wrap');
+  root.innerHTML=`<div class="gate-card">
+    <div class="gate-title">Mi biblioteca</div>
+    <p class="gate-p">Introduce tus credenciales para acceder.</p>
+    <div class="field"><label>Email</label><input id="g-email" type="email" autocomplete="username"></div>
+    <div class="field"><label>Contraseña</label><input id="g-pass" type="password" autocomplete="current-password"></div>
+    <button class="btn primary" id="g-go">Entrar</button>
+    <div class="gate-err" id="g-err"></div>
+  </div>`;
+  swap(root);
+  const go=async()=>{const b=$('#g-go');b.disabled=true;$('#g-err').textContent='';
+    try{await store.login($('#g-email').value.trim(),$('#g-pass').value);}
+    catch(e){$('#g-err').textContent='No se pudo entrar. Revisa el email y la contraseña.';b.disabled=false;}};
+  $('#g-go').onclick=go;
+  $('#g-pass').addEventListener('keydown',e=>{if(e.key==='Enter')go();});
+  $('#g-email').focus();
 }
 
 /* ---------- RESUMEN ---------- */
@@ -737,7 +771,7 @@ function swap(node){const a=app();a.innerHTML='';a.appendChild(node);}
    8 · ARRANQUE
    ============================================================ */
 store=makeStore();
-store.onAuth(()=>{renderAuth();if(S.view==='gestionar')render();});
+store.onAuth(()=>{render();});
 store.init(books=>{BOOKS=books;render();});
 render();
 </script>
